@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">base</string>
+    <string name="share">分享</string>
+
+
+    <string name="loadsir_empty">没有数据</string>
+    <string name="loadsir_loading">加载失败</string>
+    <string name="loadsir_error">请求出错</string>
+    <string name="click_me_to_retry">点击重试</string>
+    <string name="no_more_data">没有更多了</string>
+</resources>

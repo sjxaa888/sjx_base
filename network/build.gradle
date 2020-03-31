@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //使用dataBinding
+    dataBinding {
+        enabled true
+    }
+
+}
+
+dependencies {
+    api project(':base')
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    api 'com.squareup.retrofit2:converter-gson:2.6.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
+    //下载文件
+    // core
+    api 'com.liulishuo.okdownload:okdownload:1.0.6'
+    // provide sqlite to store breakpoints
+    implementation 'com.liulishuo.okdownload:sqlite:1.0.6'
+    // provide okhttp to connect to backend
+    // and then please import okhttp dependencies by yourself
+    implementation 'com.liulishuo.okdownload:okhttp:1.0.6'
+}

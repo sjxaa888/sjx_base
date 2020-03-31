@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="environmentArray">
+        <item>test环境</item>
+        <item>release环境</item>
+    </string-array>
+
+    <string-array name="environmentValues">
+        <item>test</item>
+        <item>release</item>
+    </string-array>
+</resources>
