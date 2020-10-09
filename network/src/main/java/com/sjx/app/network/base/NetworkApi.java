@@ -78,9 +78,9 @@ public abstract class NetworkApi {
             mOkHttpClient = builder
                     .addInterceptor(interceptor)    //日志
                     //链接超时
-                    .connectTimeout(5, TimeUnit.SECONDS)
+                    .connectTimeout(getTimeout(), TimeUnit.SECONDS)
                     //读取超时
-                    .readTimeout(5, TimeUnit.SECONDS)
+                    .readTimeout(getTimeout(), TimeUnit.SECONDS)
                     //缓存
 //                .cache(new Cache(context.getExternalFilesDir("http_cache"), 10 << 20))
                     //添加请求拦截器
@@ -116,4 +116,8 @@ public abstract class NetworkApi {
     protected abstract Interceptor getInterceptor();
 
     protected abstract <T> Function<T, T> getAppErrorHandler();
+
+    protected int getTimeout() {
+        return 5;
+    }
 }
