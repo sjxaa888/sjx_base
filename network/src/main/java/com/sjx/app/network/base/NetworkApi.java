@@ -53,16 +53,20 @@ public abstract class NetworkApi {
     }
 
     protected Retrofit getRetrofit(Class service) {
-        if (retrofitHashMap.get(mBaseUrl + service.getName()) != null) {
-            return retrofitHashMap.get(mBaseUrl + service.getName());
+        return getRetrofit(mBaseUrl, service);
+    }
+
+    protected Retrofit getRetrofit(String httpUrl, Class service) {
+        if (retrofitHashMap.get(httpUrl + service.getName()) != null) {
+            return retrofitHashMap.get(httpUrl + service.getName());
         }
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(mBaseUrl)
+                .baseUrl(httpUrl)
                 .client(getOkHttpClient())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        retrofitHashMap.put(mBaseUrl + service.getName(), retrofit);
+        retrofitHashMap.put(httpUrl + service.getName(), retrofit);
         return retrofit;
     }
 
