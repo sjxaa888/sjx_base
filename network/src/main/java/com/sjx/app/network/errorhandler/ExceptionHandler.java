@@ -83,36 +83,36 @@ public class ExceptionHandler {
         /**
          * 未知错误
          */
-        public static final int UNKNOWN = 1000;
+        public static final String UNKNOWN = "1000";
         /**
          * 解析错误
          */
-        public static final int PARSE_ERROR = 1001;
+        public static final String PARSE_ERROR = "1001";
         /**
          * 网络错误
          */
-        public static final int NETWORD_ERROR = 1002;
+        public static final String NETWORD_ERROR = "1002";
         /**
          * 协议出错
          */
-        public static final int HTTP_ERROR = 1003;
+        public static final String HTTP_ERROR = "1003";
 
         /**
          * 证书出错
          */
-        public static final int SSL_ERROR = 1005;
+        public static final String SSL_ERROR = "1005";
 
         /**
          * 连接超时
          */
-        public static final int TIMEOUT_ERROR = 1006;
+        public static final String TIMEOUT_ERROR = "1006";
     }
 
     public static class ResponeThrowable extends Exception {
-        public int code;
+        public String code;
         public String message;
 
-        public ResponeThrowable(Throwable throwable, int code) {
+        public ResponeThrowable(Throwable throwable, String code) {
             super(throwable);
             this.code = code;
 
@@ -120,7 +120,7 @@ public class ExceptionHandler {
     }
 
     public static class ServerException extends RuntimeException {
-        public int code;
+        public String code;
         public String message;
     }
 }
