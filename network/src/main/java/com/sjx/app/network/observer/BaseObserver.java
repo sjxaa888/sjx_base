@@ -11,6 +11,7 @@ public abstract class BaseObserver<T> extends DisposableObserver<T> {
     @Override
     public void onNext(T t) {
         onSuccess(t);
+        onComplete();
     }
 
     @Override
@@ -18,6 +19,7 @@ public abstract class BaseObserver<T> extends DisposableObserver<T> {
         if (e instanceof ExceptionHandler.ResponeThrowable) {
             onFailure((ExceptionHandler.ResponeThrowable) e);
         }
+        onComplete();
     }
 
     @Override

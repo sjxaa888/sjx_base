@@ -1,15 +1,16 @@
 package com.sjx.app.base.room.dao;
 
-import com.sjx.app.base.room.Entity.NetworkCache;
-
-import java.util.List;
-
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
+
+import com.sjx.app.base.room.Entity.NetworkCache;
+
+import java.util.List;
+
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
@@ -18,8 +19,13 @@ public interface NetworkCacheDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertAll(NetworkCache... networkCaches);
 
+    //删除一个
     @Delete
     void delete(NetworkCache networkCache);
+
+    //删除全部
+    @Query("DELETE FROM networkcache")
+    void deleteAll();
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     int updateAll(NetworkCache... networkCaches);
@@ -32,7 +38,7 @@ public interface NetworkCacheDao {
     Single<NetworkCache> findByCacheKey(String cacheKey);
 
     @Query("SELECT * FROM networkcache")
-    List<NetworkCache> getAll();
+    Single<List<NetworkCache>> getAll();
 
     /*
      * onConflict：默认值是OnConflictStrategy.ABORT，表示当插入有冲突的时候的处理策略。
